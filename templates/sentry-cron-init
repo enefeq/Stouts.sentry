@@ -1,15 +1,15 @@
 #!/bin/sh
 #
-# Sentry web server.
+# Sentry cron service.
 #
 # chkconfig:   - 20 80
-# description: Run a Sentry web-server service.
+# description: Run Sentry's cron service.
 
 # Source function library.
 . /etc/rc.d/init.d/functions
 
 exec="{{sentry_home}}/env/bin/sentry "
-prog="sentry-web"
+prog="sentry-cron"
 config={{sentry_home}}
 pidfile="/var/run/$prog"
 
@@ -21,7 +21,7 @@ start() {
     [ -x $exec ] || exit 5
     [ -f $config ] || exit 6
     echo -n $"Starting $prog: "
-    daemonize -c {{sentry_home}} -l $lockfile $exec --config=$config sentry run web --pidfile=$pidfile --logfile=/var/log/sentry-web.log
+    daemonize -c {{sentry_home}} -l $lockfile $exec --config=$config sentry run cron --pidfile=$pidfile --logfile=/var/log/sentry-cron.log
     retval=$?
     echo
     [ $retval -eq 0 ] && touch $lockfile

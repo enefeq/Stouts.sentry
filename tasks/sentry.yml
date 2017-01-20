@@ -19,6 +19,14 @@
   shell: virtualenv --python={{sentry_python}} {{sentry_home}}/env
   become_user: "{{sentry_user}}"
 
+- name: Install requirements for Sentry
+  pip: name={{item}} executable={{sentry_home}}/env/bin/pip
+  with_items:
+    - pip
+    - setuptools
+    - wheel
+  become_user: "{{sentry_user}}"
+
 - name: Install Sentry
   shell: "{{sentry_home}}/env/bin/pip install sentry=={{sentry_version}}"
   become_user: "{{sentry_user}}"
