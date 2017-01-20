@@ -94,3 +94,4 @@
   with_items:
   - sentry-web
   - sentry-worker
+  - sentry-cron

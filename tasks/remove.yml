@@ -5,9 +5,11 @@
   with_items:
   - sentry-web
   - sentry-worker
+  - sentry-cron
 
 - name: Remove Upstart configuration
   file: path=/etc/init/{{item}}.conf state=absent
   with_items:
     - sentry-web
     - sentry-worker
+    - sentry-cron
