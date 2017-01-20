@@ -68,12 +68,6 @@ SENTRY_WEB_HOST = '{{sentry_web_host}}'
 SENTRY_WEB_PORT = {{sentry_web_port}}
 SENTRY_WEB_OPTIONS = {{sentry_web_options|to_nice_json}}
 
-# Filestore
-SENTRY_FILESTORE = 'django.core.files.storage.FileSystemStorage'
-SENTRY_FILESTORE_OPTIONS = {
-    'location': '{{sentry_home}}/_files'
-}
-
 {% if not sentry_auth_register %}
 SENTRY_FEATURES['auth:register'] = False
 {% endif %}

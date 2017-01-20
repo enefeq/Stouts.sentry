@@ -18,3 +18,7 @@ redis.clusters:
             0:
                 host: "{{redis_bind}}"
                 port: {{redis_port}}
+
+filestore.backend: 'filesystem'
+filestore.options:
+  location: '{{sentry_home}}/_files'
